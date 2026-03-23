@@ -65,3 +65,29 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'haml-rails'
+gem 'html2haml'
+
+
+gem 'sass-rails', '~> 6.0'
+
+# Use jquery as the JavaScript library
+gem 'jquery-ui-rails'
+
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.3.7'
+
+# Icons
+gem 'font-awesome-sass'
+gem 'font-awesome-rails'
+
+# Debugging for development
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+# Pagination
+gem 'kaminari'
