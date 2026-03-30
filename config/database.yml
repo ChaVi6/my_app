@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
-  password: 1234
+  username: rails_user
+  password: 12345678
   host: localhost
   port: 5432
 
@@ -14,3 +14,7 @@ development:
 test:
   <<: *default
   database: my_app_test
+
+production:
+  <<: *default
+  database: my_app_production
