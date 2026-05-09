@@ -1,0 +1,32 @@
+.page-container
+  .row
+    .col-md-3
+      .left_controls
+        .select_theme
+          = render 'work/button_theme_select', locale: @current_locale
+        .total_values
+          %h2.total Количество оценок:
+          %span.total-value 0
+    .col-md-9
+      .image_display
+        .row.image
+          .col-md-12
+            %h2.up-theme{title: "theme_name"}
+              = @selected_theme || "Выберите тему"
+          .col-md-12
+            %h2.up{title: "Image file name"}
+              = @selected_image_name || "Название изображения"
+        .row
+          .col-md-1.img-left-side
+            %h3{title: "Предыдущее изображение"}
+              %i.fa.fa-chevron-circle-left.strong
+          .col-md-10.img-center
+            %img{ src: asset_path('pictures/gb.jpg'), style: "width:100%;" }
+          .col-md-1.img-right-side
+            %h3{title: "Следующее изображение"}
+              %i.fa.fa-chevron-circle-right.strong
+        .row
+          .col-md-12.image_user_value
+            %h3 Ваша оценка:
+            %input#user-value{type: "number", min: 0, max: 10}
+            %button#save-value Сохранить

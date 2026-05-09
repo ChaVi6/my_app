@@ -1,0 +1,11 @@
+%p{style: "color: green"}= notice
+
+%h1 Topics
+
+%div{id: "topics"}
+  - @topics.each do |topic|
+    = render topic
+    %p
+      = link_to "Show this topic", topic
+
+= link_to "New topic", new_topic_path

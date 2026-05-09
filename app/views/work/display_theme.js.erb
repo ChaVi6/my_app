@@ -1,0 +1,33 @@
+// Получаем данные от контроллера
+var imageData = <%= raw @image_data.to_json %>;
+console.log("Данные изображения:", imageData);
+
+// Обновляем количество оценок
+$('.total_values span.total-value').html(imageData.values_qty);
+
+// Показываем название темы
+$('.up-theme').html(imageData.theme);
+
+// Показываем название изображения
+$('.up').html(imageData.name);
+
+// Показываем само изображение
+var imagePath = "/assets/pictures/" + imageData.file;
+$('.img-center img').attr('src', imagePath).attr('alt', imageData.name);
+
+// Устанавливаем глобальные переменные для work.js
+window.currentThemeId = imageData.theme_id;
+window.currentIndex = imageData.index;
+window.totalImages = imageData.images_arr_size;
+
+console.log("Глобальные переменные:", {
+    themeId: window.currentThemeId,
+    index: window.currentIndex,
+    total: window.totalImages
+});
+
+// Показываем кнопки перелистывания
+$('.img-left-side, .img-right-side').css('display', 'block');
+
+// Восстанавливаем кнопку выбора темы
+$('.select_theme').empty().html("<%= j render 'work/button_theme_select' %>");
