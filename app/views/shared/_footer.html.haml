@@ -1,6 +1,8 @@
 %footer
   .container
     %ul.list-inline
-      %li= link_to 'Contacts', main_contacts_path
-      %li= link_to 'About', main_about_path
-    %p.text-muted © 2026 MyApp. The app is under development.
+      %li= link_to t('.contacts'), main_contacts_path
+      %li= link_to t('.about_us'), main_about_path
+    %p.text-muted
+      = t('.copyright')
+      = t('.development_status')

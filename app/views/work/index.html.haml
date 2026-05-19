@@ -5,28 +5,32 @@
         .select_theme
           = render 'work/button_theme_select', locale: @current_locale
         .total_values
-          %h2.total Количество оценок:
-          %span.total-value 0
+          %h2.total= t('.total_ratings_label')
+          %span.total-value= @total_all_values
+
+        / Кнопка без открытия в новой вкладке
+        .summary-button
+          %br
+          %br
+          = link_to t('.summary_button'), work_summary_path, class: 'btn btn-info'
+
     .col-md-9
       .image_display
         .row.image
           .col-md-12
             %h2.up-theme{title: "theme_name"}
-              = @selected_theme || "Выберите тему"
+              = @selected_theme || t('.default_theme_text')
           .col-md-12
             %h2.up{title: "Image file name"}
-              = @selected_image_name || "Название изображения"
+              = @selected_image_name || t('.default_image_name')
         .row
           .col-md-1.img-left-side
-            %h3{title: "Предыдущее изображение"}
+            %h3{title: t('.prev_image_title')}
               %i.fa.fa-chevron-circle-left.strong
           .col-md-10.img-center
             %img{ src: asset_path('pictures/gb.jpg'), style: "width:100%;" }
           .col-md-1.img-right-side
-            %h3{title: "Следующее изображение"}
+            %h3{title: t('.next_image_title')}
               %i.fa.fa-chevron-circle-right.strong
-        .row
-          .col-md-12.image_user_value
-            %h3 Ваша оценка:
-            %input#user-value{type: "number", min: 0, max: 10}
-            %button#save-value Сохранить
+
+        .eval-form-container

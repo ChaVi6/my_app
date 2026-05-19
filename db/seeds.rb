@@ -32,10 +32,6 @@ Image.create(name: "Арсен Захарян (ФК Реал Сосьедад, �
 
 User.create(name: "Эксперт", email: "expert@example.com")
 
-(1..15).each do |image_id|
-  Value.create(user_id: 1, image_id: image_id, value: rand(3..5))
-end
-
 puts "База данных успешно заполнена!"
 puts "Тем: #{Theme.count}"
 puts "Изображений: #{Image.count}"

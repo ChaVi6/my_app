@@ -10,5 +10,12 @@
   %body
     = render 'shared/header'
     .container
+      - if flash[:notice]
+        .alert.alert-success= flash[:notice]
+      - if flash[:alert]
+        .alert.alert-danger= flash[:alert]
+      - if flash[:warning]
+        .alert.alert-warning= flash[:warning]
+
       = yield
     = render 'shared/footer'

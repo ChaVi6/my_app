@@ -1,6 +1,31 @@
 %header
   %nav
     %ul
-      %li= link_to 'Home', root_path
-      %li= link_to 'Ruby on Rails Website', 'http://rubyonrails.org'
-      %li= link_to 'Help', main_help_path
+      %li= link_to t('.home'), root_path(locale: I18n.locale)
+
+      - if signed_in?
+        %li= link_to t('.expert_evaluation'), work_path(locale: I18n.locale)
+        %li= link_to t('.my_profile'), user_path(id: current_user.id, locale: I18n.locale)
+        %li= link_to t('.sign_out'), session_path(locale: I18n.locale), method: :delete
+        %li= link_to current_user.email, user_path(id: current_user.id, locale: I18n.locale)
+        %li= gravatar_for current_user, size: 30
+      - else
+        %li= link_to t('.sign_in'), new_session_path(locale: I18n.locale)
+        %li= link_to t('.sign_up'), signup_path(locale: I18n.locale)
+
+      %li.locale-switcher
+        = link_to url_for(locale: :ru) do
+          = image_tag "ru.png", size: "24x24"
+          - if I18n.locale == :ru
+            %strong Русский
+          - else
+            Русский
+
+        = " | "
+
+        = link_to url_for(locale: :en) do
+          = image_tag "eng.png", size: "24x24"
+          - if I18n.locale == :en
+            %strong English
+          - else
+            English

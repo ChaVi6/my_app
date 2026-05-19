@@ -1,0 +1,12 @@
+%h1= t('.sign_in')
+
+= form_tag session_path, method: :post, class: 'form-horizontal' do
+  .form-group
+    = label_tag :email, t('.email')
+    = email_field_tag 'session[email]', nil, class: 'form-control', required: true
+
+  .form-group
+    = label_tag :password, t('.password')
+    = password_field_tag 'session[password]', nil, class: 'form-control', required: true
+
+  = submit_tag t('.submit_button'), class: 'btn btn-primary'

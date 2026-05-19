@@ -1,0 +1,253 @@
+ru:
+  shared:
+    header:
+      home: "Главная"
+      expert_evaluation: "Оценка"
+      my_profile: "Мой профиль"
+      sign_out: "Выйти"
+      sign_in: "Вход"
+      sign_up: "Регистрация"
+      language: "Язык"
+    footer:
+      contacts: "Контакты"
+      about_us: "О нас"
+      copyright: "© 2026 Football Experteese."
+      development_status: "Приложение находится в разработке."
+
+  api:
+    errors:
+      invalid_index: "Неверный индекс изображения"
+    messages:
+      rating_saved: "Оценка сохранена"
+      no_ratings_yet: "нет оценок"
+
+  images:
+    notices:
+      created_success: "Изображение успешно создано."
+      updated_success: "Изображение успешно обновлено."
+      destroyed_success: "Изображение успешно удалено."
+
+  sessions:
+    create:
+      title: "Sessions#create"
+      message: "Find me in app/views/sessions/create.html.haml"
+    destroy:
+      title: "Sessions#destroy"
+      message: "Find me in app/views/sessions/destroy.html.haml"
+    new:
+      sign_in: "Вход"
+      email: "Email"
+      password: "Пароль"
+      submit_button: "Войти"
+    flash:
+      user_not_found: "Пользователь с email '%{email}' не найден"
+      invalid_password: "Неверный пароль для пользователя %{email}"
+      invalid_credentials: "Неверный email или пароль"
+
+  themes:
+    notices:
+      created_success: "Тема успешно создана."
+      updated_success: "Тема успешно обновлена."
+      destroyed_success: "Тема успешно удалена."
+    edit:
+      editing_theme: "Редактирование темы"
+      show_theme: "Показать эту тему"
+      back_to_themes: "Назад к темам"
+    index:
+      themes: "Темы"
+      show_theme: "Показать эту тему"
+      new_theme: "Новая тема"
+    new:
+      new_theme: "Новая тема"
+      back_to_themes: "Назад к темам"
+    show:
+      edit_theme: "Редактировать эту тему"
+      back_to_themes: "Назад к темам"
+      destroy_theme: "Удалить эту тему"
+
+  topics:
+    edit:
+      editing_topic: "Редактирование раздела"
+      show_topic: "Показать этот раздел"
+      back_to_topics: "Назад к разделам"
+    index:
+      topics: "Разделы"
+      show_topic: "Показать этот раздел"
+      new_topic: "Новый раздел"
+    new:
+      new_topic: "Новый раздел"
+      back_to_topics: "Назад к разделам"
+    show:
+      edit_topic: "Редактировать этот раздел"
+      back_to_topics: "Назад к разделам"
+      destroy_topic: "Удалить этот раздел"
+
+  users:
+    flash:
+      welcome: "Добро пожаловать в приложение!"
+    edit:
+      editing_user: "Редактирование пользователя"
+      show_user: "Показать этого пользователя"
+      back_to_users: "Назад к пользователям"
+    index:
+      users: "Пользователи"
+      show_user: "Показать этого пользователя"
+      new_user: "Новый пользователь"
+    new:
+      sign_up: "Регистрация"
+      errors_title:
+        one: "1 ошибка запретила сохранить пользователя:"
+        few: "%{count} ошибки запретили сохранить пользователя:"
+        many: "%{count} ошибок запретили сохранить пользователя:"
+        other: "%{count} ошибки запретили сохранить пользователя:"
+      name: "Имя"
+      email: "Email"
+      password: "Пароль"
+      password_confirmation: "Подтверждение пароля"
+      create_account: "Создать аккаунт"
+    show:
+      email_label: "Email:"
+      ratings_count_label: "Количество оценок:"
+      recent_ratings: "Последние оценки"
+      image_name: "Изображение"
+      user_rating: "Оценка пользователя"
+      average_rating: "Средняя оценка"
+      no_rating: "нет"
+      no_ratings_message: "Вы пока не оставили ни одной оценки."
+    results:
+      title: "Экспертные оценки пользователя %{name}"
+      statistics: "Статистика"
+      total_ratings: "Всего оценок:"
+      expert_ratings: "Экспертных оценок:"
+      expert_percentage: "Процент экспертных:"
+      expert_criteria: "Отклонение не более %{percent}% от среднего"
+      image_name: "Изображение"
+      user_rating: "Оценка пользователя"
+      average_rating: "Средняя оценка"
+      deviation: "Отклонение"
+      rated_at: "Дата оценки"
+      no_rating: "нет оценок"
+      no_expert_ratings: "Нет оценок, соответствующих экспертным критериям (отклонение не более 25% от средней)"
+
+  values:
+    notices:
+      created_success: "Оценка успешно создана."
+      updated_success: "Оценка успешно обновлена."
+      destroyed_success: "Оценка успешно удалена."
+    edit:
+      editing_value: "Редактирование оценки"
+      show_value: "Показать эту оценку"
+      back_to_values: "Назад к оценкам"
+    index:
+      values: "Оценки"
+      show_value: "Показать эту оценку"
+      new_value: "Новая оценка"
+    new:
+      new_value: "Новая оценка"
+      back_to_values: "Назад к оценкам"
+    show:
+      edit_value: "Редактировать эту оценку"
+      back_to_values: "Назад к оценкам"
+      destroy_value: "Удалить эту оценку"
+
+  main:
+    index:
+      welcome: "Добро пожаловать в Football Experteese"
+      go_to_rating: "Перейти к оценке"
+      sign_up: "Зарегистрироваться"
+      sign_in: "Войти"
+    contacts:
+      title: "Контакты"
+    about:
+      title: "О нас"
+
+  work:
+    index:
+      select_theme: "Выберите тему"
+      total_ratings_label: "Количество оценок:"
+      default_theme_text: "Выберите тему"
+      default_image_name: "Название изображения"
+      prev_image_title: "Предыдущее изображение"
+      next_image_title: "Следующее изображение"
+      summary_button: "Общие результаты"
+    button_theme_select:
+      select_theme: "Выбрать тему"
+    choose_theme_from_arr:
+      select_theme_prompt: "Выберите тему"
+    display_theme:
+      your_rating_label: "Ваша оценка (1-10):"
+      save_button: "Сохранить"
+      average_rating_label: "Средняя оценка:"
+      no_ratings: "нет оценок"
+      rating_validation_error: "Пожалуйста, введите оценку от 1 до 10"
+      saved_log: "Сохранено:"
+      save_success_message: "Оценка сохранена!"
+      save_error_message: "Ошибка сохранения"
+    summary:
+      back_to_work: "Вернуться к оценке"
+      print: "Распечатать"
+      image_name: "Имя"
+      image_preview: "Изображение"
+      theme: "Тема"
+      average_rating: "Средняя оценка"
+      ratings_count: "Количество оценок"
+      last_rated: "Дата последней оценки"
+      no_image: "Нет изображения"
+      no_ratings: "нет оценок"
+      not_rated_yet: "еще не оценивалось"
+      no_images: "Изображения не найдены"
+      generated_at: "Сводка сгенерирована: %{time}"
+
+
+  js:
+    errors:
+      missing_data: "Не хватает данных"
+      invalid_rating: "Пожалуйста, введите оценку от 1 до 10"
+      next_fail: "Ошибка при загрузке следующего изображения:"
+      prev_fail: "Ошибка при загрузке предыдущего изображения:"
+      save_fail: "Ошибка при сохранении оценки:"
+      save_fail_message: "Не удалось сохранить оценку."
+    success:
+      next: "Успех (вперёд):"
+      prev: "Успех (назад):"
+      rating_saved: "Оценка сохранена:"
+      rating_saved_message: "Оценка сохранена!"
+    no_ratings_yet: "нет оценок"
+    current_image_id: "Теперь currentImageId ="
+    saving_for: "Сохраняем для image_id:"
+    value: "значение:"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              taken: "уже существует"
+            email:
+              taken: "уже существует"
+              invalid: "имеет неверный формат"
+            password:
+              too_short: "слишком короткий (минимум %{count} символов)"
+              blank: "не может быть пустым"
+          record_invalid: "Ошибка валидации: %{errors}"
+      messages:
+        record_invalid: "Ошибка валидации: %{errors}"
+        taken: "уже существует"
+        blank: "не может быть пустым"
+        too_short: "слишком короткий (минимум %{count} символов)"
+        too_long: "слишком длинный (максимум %{count} символов)"
+        invalid: "имеет неверный формат"
+        confirmation: "не совпадает с основным"
+
+  time:
+    formats:
+      long: "%d %B %Y, %H:%M"
+      short: "%d %b, %H:%M"
+      default: "%Y-%m-%d %H:%M:%S"
+
+    date:
+      formats:
+        long: "%d %B %Y"
+        short: "%d %b"
+        default: "%Y-%m-%d"

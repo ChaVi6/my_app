@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: "Image was successfully created." }
+        format.html { redirect_to @image, notice: I18n.t('images.notices.created_success') }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: "Image was successfully updated.", status: :see_other }
+        format.html { redirect_to @image, notice: I18n.t('images.notices.updated_success'), status: :see_other }
         format.json { render :show, status: :ok, location: @image }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,19 @@ class ImagesController < ApplicationController
     @image.destroy!
 
     respond_to do |format|
-      format.html { redirect_to images_path, notice: "Image was successfully destroyed.", status: :see_other }
+      format.html { redirect_to images_path, notice: I18n.t('images.notices.destroyed_success'), status: :see_other }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_image
-      @image = Image.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_image
+    @image = Image.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def image_params
-      params.require(:image).permit(:name, :file, :ave_value, :theme_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def image_params
+    params.require(:image).permit(:name, :file, :ave_value, :theme_id)
+  end
 end

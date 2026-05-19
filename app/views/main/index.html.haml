@@ -1,1 +1,9 @@
-%h1 Main page
+.center.jumbotron
+  %h1= t('.welcome')
+
+  - if signed_in?
+    = link_to t('.go_to_rating'), work_path, class: "btn btn-lg btn-primary"
+  - else
+    .text-right
+      = link_to t('.sign_up'), signup_path, class: "btn btn-secondary btn-lg mr-2"
+      = link_to t('.sign_in'), new_session_path, class: "btn btn-secondary btn-lg"

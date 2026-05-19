@@ -3,8 +3,8 @@
 = render @theme
 
 %div
-  = link_to "Edit this theme", edit_theme_path(@theme)
+  = link_to t('.edit_theme'), edit_theme_path(@theme)
   |
-  = link_to "Back to themes", themes_path
-
-  = button_to "Destroy this theme", @theme, method: :delete
+  = link_to t('.back_to_themes'), themes_path
+  |
+  = button_to t('.destroy_theme'), @theme, method: :delete

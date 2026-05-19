@@ -3,8 +3,8 @@
 = render @value
 
 %div
-  = link_to "Edit this value", edit_value_path(@value)
+  = link_to t('.edit_value'), edit_value_path(@value)
   |
-  = link_to "Back to values", values_path
-
-  = button_to "Destroy this value", @value, method: :delete
+  = link_to t('.back_to_values'), values_path
+  |
+  = button_to t('.destroy_value'), @value, method: :delete

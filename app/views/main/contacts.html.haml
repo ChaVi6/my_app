@@ -1,1 +1,8 @@
-%h1 Contacts page
+%h1= t('.title')
+
+- if current_user
+  %p Уважаемый пользователь #{current_user.name}! Всегда рады помочь!
+- else
+  %p Уважаемый пользователь! Всегда рады помочь!
+
+%p Связаться с нами можно по номеру +7 (XXX) XXX-XX-XX или по почте footexp@example.com

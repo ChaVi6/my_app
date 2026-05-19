@@ -2,10 +2,13 @@ class WorkController < ApplicationController
   include WorkImage
 
   def index
-    @selected_theme = "Выберите тему"
+    @selected_theme = I18n.t('work.index.select_theme')
     @selected_image_name = ""
     @default_image_path = "/assets/images/pictures/gb.jpg"
     @current_locale = I18n.locale
+
+    # Общее количество оценок ВСЕХ пользователей в системе
+    @total_all_values = Value.count
   end
 
   def choose_theme
@@ -20,16 +23,26 @@ class WorkController < ApplicationController
     theme_name = params[:theme]
     theme = Theme.find_by(name: theme_name)
 
-    if theme && theme.images.any?
-      @image_data = show_image(theme.id, 0)
-      @image_data[:theme] = theme.name
-      @image_data[:values_qty] = Value.count
-      @image_data[:theme_id] = theme.id
-      @image_data[:images_arr_size] = theme.images.count
-      respond_to :js
-    else
-      head :ok
+    if theme
+      images = Image.where(theme_id: theme.id)
+      if images.any?
+        image_data = show_image(theme.id, 0)
+
+        @image_data = {
+          theme: theme_name,
+          index: image_data[:index],
+          name: image_data[:name],
+          file: image_data[:file],
+          image_id: image_data[:image_id],
+          theme_id: theme.id,
+          images_arr_size: images.size,
+          values_qty: image_data[:values_qty],
+          user_value: image_data[:value],
+          common_ave_value: image_data[:common_ave_value]
+        }
+      end
     end
+    respond_to :js
   end
 
   def next_image
@@ -60,6 +73,34 @@ class WorkController < ApplicationController
     respond_to :js
   end
 
+  # НОВЫЙ МЕТОД для общей сводки
+  def summary
+    @images_with_details = []
+
+    Image.includes(:theme).find_each do |image|
+      values_qty = image.values.count
+      average_value = image.ave_value || 0
+      last_rated_at = image.values.maximum(:created_at)
+
+      # Конвертируем в московское время, если есть
+      if last_rated_at.present?
+        last_rated_at = last_rated_at.in_time_zone('Europe/Moscow')
+      end
+
+      @images_with_details << {
+        id: image.id,
+        name: image.name,
+        file: image.file,
+        theme_name: image.theme&.name || 'Без темы',
+        average_value: average_value,
+        values_count: values_qty,
+        last_rated_at: last_rated_at
+      }
+    end
+
+    @images_with_details = @images_with_details.sort_by { |img| [img[:theme_name], img[:name]] }
+  end
+
   private
 
   def next_index(index, length)
@@ -80,6 +121,7 @@ class WorkController < ApplicationController
     end
 
     image = theme_images[image_index]
+    values_qty = Value.where(image_id: image.id).count
 
     {
       index: image_index,
@@ -88,7 +130,8 @@ class WorkController < ApplicationController
       file: image.file,
       value: 0,
       user_valued: false,
-      common_ave_value: image.ave_value || 0
+      common_ave_value: image.ave_value || 0,
+      values_qty: values_qty
     }
   end
 end

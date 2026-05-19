@@ -1,10 +1,10 @@
-%h1 Editing user
+%h1= t('.editing_user')
 
 = render "form", user: @user
 
 %br
 
 %div
-  = link_to "Show this user", @user
+  = link_to t('.show_user'), @user
   |
-  = link_to "Back to users", users_path
+  = link_to t('.back_to_users'), users_path

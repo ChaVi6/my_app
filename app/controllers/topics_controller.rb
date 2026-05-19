@@ -25,7 +25,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: "Topic was successfully created." }
+        format.html { redirect_to @topic, notice: I18n.t('topics.notices.created_success') }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: "Topic was successfully updated.", status: :see_other }
+        format.html { redirect_to @topic, notice: I18n.t('topics.notices.updated_success'), status: :see_other }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,19 @@ class TopicsController < ApplicationController
     @topic.destroy!
 
     respond_to do |format|
-      format.html { redirect_to topics_path, notice: "Topic was successfully destroyed.", status: :see_other }
+      format.html { redirect_to topics_path, notice: I18n.t('topics.notices.destroyed_success'), status: :see_other }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_topic
-      @topic = Topic.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def topic_params
-      params.require(:topic).permit(:name, :qty_items)
-    end
+  # Only allow a list of trusted parameters through.
+  def topic_params
+    params.require(:topic).permit(:name, :qty_items)
+  end
 end

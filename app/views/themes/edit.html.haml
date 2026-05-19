@@ -1,10 +1,10 @@
-%h1 Editing theme
+%h1= t('.editing_theme')
 
 = render "form", theme: @theme
 
 %br
 
 %div
-  = link_to "Show this theme", @theme
+  = link_to t('.show_theme'), @theme
   |
-  = link_to "Back to themes", themes_path
+  = link_to t('.back_to_themes'), themes_path

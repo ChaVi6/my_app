@@ -1,31 +1,223 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  shared:
+    header:
+      home: "Home"
+      expert_evaluation: "Expert evaluation"
+      my_profile: "My profile"
+      sign_out: "Sign out"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      language: "Language"
+    footer:
+      contacts: "Contacts"
+      about_us: "About Us"
+      copyright: "© 2026 Football Experteese."
+      development_status: "The app is under development."
+
+  api:
+    errors:
+      invalid_index: "Invalid image index"
+    messages:
+      rating_saved: "Rating saved"
+      no_ratings_yet: "no ratings yet"
+
+  images:
+    notices:
+      created_success: "Image was successfully created."
+      updated_success: "Image was successfully updated."
+      destroyed_success: "Image was successfully destroyed."
+
+  sessions:
+    create:
+      title: "Sessions#create"
+      message: "Find me in app/views/sessions/create.html.haml"
+    destroy:
+      title: "Sessions#destroy"
+      message: "Find me in app/views/sessions/destroy.html.haml"
+    new:
+      sign_in: "Sign in"
+      email: "Email"
+      password: "Password"
+      submit_button: "Sign in"
+    flash:
+      user_not_found: "User with email '%{email}' not found"
+      invalid_password: "Invalid password for user %{name}"
+      invalid_credentials: "Invalid email or password"
+
+  themes:
+    notices:
+      created_success: "Theme was successfully created."
+      updated_success: "Theme was successfully updated."
+      destroyed_success: "Theme was successfully destroyed."
+    edit:
+      editing_theme: "Editing theme"
+      show_theme: "Show this theme"
+      back_to_themes: "Back to themes"
+    index:
+      themes: "Themes"
+      show_theme: "Show this theme"
+      new_theme: "New theme"
+    new:
+      new_theme: "New theme"
+      back_to_themes: "Back to themes"
+    show:
+      edit_theme: "Edit this theme"
+      back_to_themes: "Back to themes"
+      destroy_theme: "Destroy this theme"
+
+  topics:
+    edit:
+      editing_topic: "Editing topic"
+      show_topic: "Show this topic"
+      back_to_topics: "Back to topics"
+    index:
+      topics: "Topics"
+      show_topic: "Show this topic"
+      new_topic: "New topic"
+    new:
+      new_topic: "New topic"
+      back_to_topics: "Back to topics"
+    show:
+      edit_topic: "Edit this topic"
+      back_to_topics: "Back to topics"
+      destroy_topic: "Destroy this topic"
+
+  users:
+    flash:
+      welcome: "Welcome to the app!"
+    edit:
+      editing_user: "Editing user"
+      show_user: "Show this user"
+      back_to_users: "Back to users"
+    index:
+      users: "Users"
+      show_user: "Show this user"
+      new_user: "New user"
+    new:
+      sign_up: "Sign up"
+      errors_title:
+        one: "1 error prohibited this user from being saved:"
+        other: "%{count} errors prohibited this user from being saved:"
+      name: "Name"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+      create_account: "Create account"
+    show:
+      email_label: "Email:"
+      ratings_count_label: "Number of ratings:"
+      recent_ratings: "Recent ratings"
+      image_name: "Image"
+      user_rating: "User rating"
+      average_rating: "Average rating"
+      no_rating: "none"
+      no_ratings_message: "You haven't left any ratings yet."
+
+  values:
+    notices:
+      created_success: "Value was successfully created."
+      updated_success: "Value was successfully updated."
+      destroyed_success: "Value was successfully destroyed."
+    edit:
+      editing_value: "Editing value"
+      show_value: "Show this value"
+      back_to_values: "Back to values"
+    index:
+      values: "Values"
+      show_value: "Show this value"
+      new_value: "New value"
+    new:
+      new_value: "New value"
+      back_to_values: "Back to values"
+    show:
+      edit_value: "Edit this value"
+      back_to_values: "Back to values"
+      destroy_value: "Destroy this value"
+
+  main:
+    index:
+      welcome: "Welcome to Football Experteese"
+      go_to_rating: "Go to rating"
+      sign_up: "Sign up"
+      sign_in: "Sign in"
+    contacts:
+      title: "Contacts"
+    about:
+      title: "About Us"
+
+  work:
+    index:
+      select_theme: "Select a theme"
+      total_ratings_label: "Number of ratings:"
+      default_theme_text: "Select a theme"
+      default_image_name: "Image name"
+      prev_image_title: "Previous image"
+      next_image_title: "Next image"
+    button_theme_select:
+      select_theme: "Select theme"
+    choose_theme_from_arr:
+      select_theme_prompt: "Select a theme"
+    display_theme:
+      your_rating_label: "Your rating (1-10):"
+      save_button: "Save"
+      average_rating_label: "Average rating:"
+      no_ratings: "no ratings yet"
+      rating_validation_error: "Please enter a rating from 1 to 10"
+      saved_log: "Saved:"
+      save_success_message: "Rating saved!"
+      save_error_message: "Save error"
+    summary:
+      back_to_work: "Back to assessment"
+      print: "Print"
+      image_name: "Image Name"
+      image_preview: "Image Preview"
+      theme: "Theme"
+      average_rating: "Average Rating"
+      ratings_count: "Ratings Count"
+      last_rated: "Last Rated"
+      no_image: "No image"
+      no_ratings: "no ratings"
+      not_rated_yet: "not rated yet"
+      no_images: "No images found"
+      generated_at: "Report generated: %{time}"
+
+  js:
+    errors:
+      missing_data: "Missing data"
+      invalid_rating: "Please enter a rating from 1 to 10"
+      next_fail: "Error loading next image:"
+      prev_fail: "Error loading previous image:"
+      save_fail: "Error saving rating:"
+      save_fail_message: "Failed to save rating."
+    success:
+      next: "Success (next):"
+      prev: "Success (prev):"
+      rating_saved: "Rating saved:"
+      rating_saved_message: "Rating saved!"
+    no_ratings_yet: "no ratings yet"
+    current_image_id: "Now currentImageId ="
+    saving_for: "Saving for image_id:"
+    value: "value:"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              taken: "has already been taken"
+            email:
+              taken: "has already been taken"
+              invalid: "is invalid"
+            password:
+              too_short: "is too short (minimum %{count} characters)"
+              blank: "can't be blank"
+      messages:
+        record_invalid: "Validation failed: %{errors}"
+        taken: "has already been taken"
+        blank: "can't be blank"
+        too_short: "is too short (minimum %{count} characters)"
+        too_long: "is too long (maximum %{count} characters)"
+        invalid: "is invalid"
+        confirmation: "doesn't match original"
+

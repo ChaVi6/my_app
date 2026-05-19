@@ -1,10 +1,29 @@
-%p{style: "color: green"}= notice
-
-= render @user
-
-%div
-  = link_to "Edit this user", edit_user_path(@user)
-  |
-  = link_to "Back to users", users_path
-
-  = button_to "Destroy this user", @user, method: :delete
+.row
+  .col-md-4
+    %section
+      %h1
+        = gravatar_for @user, size: 150
+        = @user.name
+      %p
+        %strong= t('.email_label')
+        = @user.email
+      %p
+        %strong= t('.ratings_count_label')
+        = @user.values.count
+  .col-md-8
+    %h3= t('.recent_ratings')
+    - if @user.values.any?
+      %table.table
+        %thead
+          %tr
+            %th= t('.image_name')
+            %th= t('.user_rating')
+            %th= t('.average_rating')
+        %tbody
+          - @user.values.each do |val|
+            %tr
+              %td= val.image.name
+              %td= val.value
+              %td= val.image.ave_value || t('.no_rating')
+    - else
+      %p= t('.no_ratings_message')

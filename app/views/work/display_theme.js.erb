@@ -1,33 +1,111 @@
-// Получаем данные от контроллера
+// display_theme.js.erb
 var imageData = <%= raw @image_data.to_json %>;
-console.log("Данные изображения:", imageData);
 
-// Обновляем количество оценок
-$('.total_values span.total-value').html(imageData.values_qty);
-
-// Показываем название темы
-$('.up-theme').html(imageData.theme);
-
-// Показываем название изображения
-$('.up').html(imageData.name);
-
-// Показываем само изображение
-var imagePath = "/assets/pictures/" + imageData.file;
-$('.img-center img').attr('src', imagePath).attr('alt', imageData.name);
-
-// Устанавливаем глобальные переменные для work.js
+// Сохраняем глобальные переменные
 window.currentThemeId = imageData.theme_id;
 window.currentIndex = imageData.index;
 window.totalImages = imageData.images_arr_size;
+window.currentImageId = imageData.image_id;
 
-console.log("Глобальные переменные:", {
-    themeId: window.currentThemeId,
-    index: window.currentIndex,
-    total: window.totalImages
-});
+// Обновляем тему и название
+$('.up-theme').html(imageData.theme);
+$('.up').html(imageData.name);
+
+// Обновляем картинку
+var pathImage = "/assets/pictures/" + imageData.file;
+$('.img-center img').attr('src', pathImage);
+
+// ОБНОВЛЯЕМ КОЛИЧЕСТВО ОЦЕНОК (теперь для конкретного изображения)
+$('.total-value').html(imageData.values_qty || 0);
+
+// Создаём форму оценки
+var evalBlock = `
+  <div class="eval-form">
+    <label><%= I18n.t('work.display_theme.your_rating_label') %></label>
+    <input type="number" id="user-value" min="1" max="10" step="1" value="${imageData.user_value || ''}">
+    <button id="save-value-btn" class="btn btn-primary"><%= I18n.t('work.display_theme.save_button') %></button>
+    <div class="average-info">
+      <p><%= I18n.t('work.display_theme.average_rating_label') %> <span id="average-value">${imageData.common_ave_value || '<%= I18n.t('work.display_theme.no_ratings') %>'}</span></p>
+    </div>
+  </div>
+`;
+
+$('.eval-form-container').html(evalBlock);
 
 // Показываем кнопки перелистывания
-$('.img-left-side, .img-right-side').css('display', 'block');
+$('.img-left-side, .img-right-side').css({"display": "block"});
 
 // Восстанавливаем кнопку выбора темы
 $('.select_theme').empty().html("<%= j render 'work/button_theme_select' %>");
+
+// ========== ОБРАБОТЧИК СОХРАНЕНИЯ ОЦЕНКИ ==========
+$(document).on('click', '#save-value-btn', function() {
+    var value = $('#user-value').val();
+    var imageId = window.currentImageId;
+
+    if (!value || value < 1 || value > 10) {
+        alert('<%= I18n.t('work.display_theme.rating_validation_error') %>');
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/api/save_value",
+        data: { image_id: imageId, value: value },
+        dataType: 'json',
+        success: function(data) {
+            console.log("<%= I18n.t('work.display_theme.saved_log') %>", data);
+            $('#average-value').html(data.common_ave_value || '<%= I18n.t('work.display_theme.no_ratings') %>');
+            $('.total-value').html(data.values_qty);
+            alert('<%= I18n.t('work.display_theme.save_success_message') %>');
+        },
+        error: function() {
+            alert('<%= I18n.t('work.display_theme.save_error_message') %>');
+        }
+    });
+});
+
+// ========== ОБРАБОТЧИКИ ПЕРЕЛИСТЫВАНИЯ ==========
+$(document).on('click', '.img-right-side', function() {
+    $.ajax({
+        url: "/api/next_image",
+        data: {
+            index: window.currentIndex,
+            theme_id: window.currentThemeId,
+            length: window.totalImages
+        },
+        dataType: "json",
+        success: function(response) {
+            window.currentIndex = response.new_image_index;
+            window.currentImageId = response.image_id;
+
+            $('.up').html(response.name);
+            $('.img-center img').attr('src', "/assets/pictures/" + response.file);
+            $('#user-value').val(response.user_value || '');
+            $('#average-value').html(response.common_ave_value || '<%= I18n.t('work.display_theme.no_ratings') %>');
+            $('.total-value').html(response.values_qty || 0);
+        }
+    });
+});
+
+$(document).on('click', '.img-left-side', function() {
+    $.ajax({
+        url: "/api/prev_image",
+        data: {
+            index: window.currentIndex,
+            theme_id: window.currentThemeId,
+            length: window.totalImages
+        },
+        dataType: "json",
+        success: function(response) {
+            window.currentIndex = response.new_image_index;
+            window.currentImageId = response.image_id;
+
+            $('.up').html(response.name);
+            $('.img-center img').attr('src', "/assets/pictures/" + response.file);
+            $('#user-value').val(response.user_value || '');
+            $('#average-value').html(response.common_ave_value || '<%= I18n.t('work.display_theme.no_ratings') %>');
+            $('.total-value').html(response.values_qty || 0);
+        }
+    });
+});

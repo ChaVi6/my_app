@@ -93,3 +93,4 @@ end
 
 # Pagination
 gem 'kaminari'
+gem 'bcrypt'

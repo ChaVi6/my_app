@@ -25,7 +25,7 @@ class ValuesController < ApplicationController
 
     respond_to do |format|
       if @value.save
-        format.html { redirect_to @value, notice: "Value was successfully created." }
+        format.html { redirect_to @value, notice: I18n.t('values.notices.created_success') }
         format.json { render :show, status: :created, location: @value }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ValuesController < ApplicationController
   def update
     respond_to do |format|
       if @value.update(value_params)
-        format.html { redirect_to @value, notice: "Value was successfully updated.", status: :see_other }
+        format.html { redirect_to @value, notice: I18n.t('values.notices.updated_success'), status: :see_other }
         format.json { render :show, status: :ok, location: @value }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,19 @@ class ValuesController < ApplicationController
     @value.destroy!
 
     respond_to do |format|
-      format.html { redirect_to values_path, notice: "Value was successfully destroyed.", status: :see_other }
+      format.html { redirect_to values_path, notice: I18n.t('values.notices.destroyed_success'), status: :see_other }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_value
-      @value = Value.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_value
+    @value = Value.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def value_params
-      params.require(:value).permit(:user_id, :image_id, :value)
-    end
+  # Only allow a list of trusted parameters through.
+  def value_params
+    params.require(:value).permit(:user_id, :image_id, :value)
+  end
 end

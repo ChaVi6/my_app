@@ -1,8 +1,8 @@
-%h1 New theme
+%h1= t('.new_theme')
 
 = render "form", theme: @theme
 
 %br
 
 %div
-  = link_to "Back to themes", themes_path
+  = link_to t('.back_to_themes'), themes_path

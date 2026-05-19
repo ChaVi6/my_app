@@ -1,11 +1,11 @@
 %p{style: "color: green"}= notice
 
-%h1 Themes
+%h1= t('.themes')
 
 %div{id: "themes"}
   - @themes.each do |theme|
     = render theme
     %p
-      = link_to "Show this theme", theme
+      = link_to t('.show_theme'), theme
 
-= link_to "New theme", new_theme_path
+= link_to t('.new_theme'), new_theme_path

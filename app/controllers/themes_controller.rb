@@ -25,7 +25,7 @@ class ThemesController < ApplicationController
 
     respond_to do |format|
       if @theme.save
-        format.html { redirect_to @theme, notice: "Theme was successfully created." }
+        format.html { redirect_to @theme, notice: I18n.t('themes.notices.created_success') }
         format.json { render :show, status: :created, location: @theme }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ThemesController < ApplicationController
   def update
     respond_to do |format|
       if @theme.update(theme_params)
-        format.html { redirect_to @theme, notice: "Theme was successfully updated.", status: :see_other }
+        format.html { redirect_to @theme, notice: I18n.t('themes.notices.updated_success'), status: :see_other }
         format.json { render :show, status: :ok, location: @theme }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,19 @@ class ThemesController < ApplicationController
     @theme.destroy!
 
     respond_to do |format|
-      format.html { redirect_to themes_path, notice: "Theme was successfully destroyed.", status: :see_other }
+      format.html { redirect_to themes_path, notice: I18n.t('themes.notices.destroyed_success'), status: :see_other }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_theme
-      @theme = Theme.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_theme
+    @theme = Theme.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def theme_params
-      params.require(:theme).permit(:name, :qty_items)
-    end
+  # Only allow a list of trusted parameters through.
+  def theme_params
+    params.require(:theme).permit(:name, :qty_items)
+  end
 end
