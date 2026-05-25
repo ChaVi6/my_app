@@ -65,23 +65,6 @@ ru:
       back_to_themes: "Назад к темам"
       destroy_theme: "Удалить эту тему"
 
-  topics:
-    edit:
-      editing_topic: "Редактирование раздела"
-      show_topic: "Показать этот раздел"
-      back_to_topics: "Назад к разделам"
-    index:
-      topics: "Разделы"
-      show_topic: "Показать этот раздел"
-      new_topic: "Новый раздел"
-    new:
-      new_topic: "Новый раздел"
-      back_to_topics: "Назад к разделам"
-    show:
-      edit_topic: "Редактировать этот раздел"
-      back_to_topics: "Назад к разделам"
-      destroy_topic: "Удалить этот раздел"
-
   users:
     flash:
       welcome: "Добро пожаловать в приложение!"
@@ -251,3 +234,11 @@ ru:
         long: "%d %B %Y"
         short: "%d %b"
         default: "%Y-%m-%d"
+
+  views:
+    pagination:
+      first: "« Первая"
+      last: "Последняя »"
+      previous: "‹ Назад"
+      next: "Вперед ›"
+      truncate: "…"

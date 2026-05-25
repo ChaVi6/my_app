@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user   # автоматически входим после регистрации
+      sign_in @user
       flash[:success] = I18n.t('users.flash.welcome')
-      redirect_to work_path   # перенаправляем в рабочую область
+      redirect_to work_path
     else
       render 'new'
     end
@@ -21,10 +21,8 @@ class UsersController < ApplicationController
   def results
     @user = User.find(params[:id])
 
-    # Получаем все оценки пользователя с информацией об изображениях
     @user_values = @user.values.includes(:image).order(created_at: :desc)
 
-    # Группируем по темам (опционально)
     @grouped_by_theme = @user_values.group_by { |v| v.image.theme.name }
   end
 

@@ -73,32 +73,8 @@ class WorkController < ApplicationController
     respond_to :js
   end
 
-  # НОВЫЙ МЕТОД для общей сводки
   def summary
-    @images_with_details = []
-
-    Image.includes(:theme).find_each do |image|
-      values_qty = image.values.count
-      average_value = image.ave_value || 0
-      last_rated_at = image.values.maximum(:created_at)
-
-      # Конвертируем в московское время, если есть
-      if last_rated_at.present?
-        last_rated_at = last_rated_at.in_time_zone('Europe/Moscow')
-      end
-
-      @images_with_details << {
-        id: image.id,
-        name: image.name,
-        file: image.file,
-        theme_name: image.theme&.name || 'Без темы',
-        average_value: average_value,
-        values_count: values_qty,
-        last_rated_at: last_rated_at
-      }
-    end
-
-    @images_with_details = @images_with_details.sort_by { |img| [img[:theme_name], img[:name]] }
+    @images = Image.includes(:theme).page(params[:page]).per(5)
   end
 
   private

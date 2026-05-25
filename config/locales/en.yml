@@ -65,23 +65,6 @@ en:
       back_to_themes: "Back to themes"
       destroy_theme: "Destroy this theme"
 
-  topics:
-    edit:
-      editing_topic: "Editing topic"
-      show_topic: "Show this topic"
-      back_to_topics: "Back to topics"
-    index:
-      topics: "Topics"
-      show_topic: "Show this topic"
-      new_topic: "New topic"
-    new:
-      new_topic: "New topic"
-      back_to_topics: "Back to topics"
-    show:
-      edit_topic: "Edit this topic"
-      back_to_topics: "Back to topics"
-      destroy_topic: "Destroy this topic"
-
   users:
     flash:
       welcome: "Welcome to the app!"
@@ -220,4 +203,12 @@ en:
         too_long: "is too long (maximum %{count} characters)"
         invalid: "is invalid"
         confirmation: "doesn't match original"
+
+  views:
+    pagination:
+      first: "« First"
+      last: "Last »"
+      previous: "‹ Prev"
+      next: "Next ›"
+      truncate: "…"
 

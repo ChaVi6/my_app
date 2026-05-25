@@ -1,7 +1,6 @@
 module UsersHelper
   def gravatar_for(user, options = { size: 80 })
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    # d=identicon — генерирует уникальную геометрическую фигуру на основе email
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{options[:size]}&d=robohash"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end

@@ -5,6 +5,13 @@ class Value < ApplicationRecord
   after_save :update_image_average
   after_destroy :update_image_average
 
+  validates :value, presence: true,
+            numericality: {
+              only_integer: true,
+              greater_than_or_equal_to: 1,
+              less_than_or_equal_to: 10
+            }
+
   def update_image_average
     image.update_average_value
   end

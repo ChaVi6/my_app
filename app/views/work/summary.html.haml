@@ -14,28 +14,30 @@
         %th= t('.ratings_count')
         %th= t('.last_rated')
     %tbody
-      - if @images_with_details.any?
-        - @images_with_details.each do |image|
+      - if @images.present? && @images.any?
+        - @images.each do |image|
           %tr
-            %td.image-name= image[:name]
+            %td.image-name= image.name
             %td.image-preview
-              - if image[:file].present?
-                = image_tag "/assets/pictures/#{image[:file]}", size: "80x80", class: "img-thumbnail"
+              - if image.file.present?
+                = image_tag "/assets/pictures/#{image.file}", size: "80x80", class: "img-thumbnail"
               - else
                 = t('.no_image')
-            %td= image[:theme_name]
+            %td= image.theme&.name || 'Без темы'
             %td.average-value
-              - if image[:average_value] > 0
-                %span.badge.badge-info= image[:average_value].round(1)
+              - if image.ave_value.to_f > 0
+                %span.badge.badge-info= image.ave_value.round(1)
               - else
                 = t('.no_ratings')
-            %td= image[:values_count]
+            %td= image.values.count
             %td
-              - if image[:last_rated_at].present?
-                = image[:last_rated_at].strftime("%d.%m.%Y %H:%M")
+              - last_rated_at = image.values.maximum(:created_at)
+              - if last_rated_at.present?
+                = last_rated_at.in_time_zone('Europe/Moscow').strftime("%d.%m.%Y %H:%M")
               - else
                 = t('.not_rated_yet')
       - else
         %tr
           %td{colspan: 6, style: "text-align: center;"}= t('.no_images')
 
+  = paginate @images

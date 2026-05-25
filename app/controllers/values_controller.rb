@@ -3,7 +3,7 @@ class ValuesController < ApplicationController
 
   # GET /values or /values.json
   def index
-    @values = Value.all
+    @values = Value.page(params[:page]).per(15)
   end
 
   # GET /values/1 or /values/1.json

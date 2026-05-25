@@ -3,7 +3,7 @@ class ThemesController < ApplicationController
 
   # GET /themes or /themes.json
   def index
-    @themes = Theme.all
+    @themes = Theme.page(params[:page]).per(10)
   end
 
   # GET /themes/1 or /themes/1.json

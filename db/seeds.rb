@@ -1,10 +1,8 @@
-# Очищаем таблицы
 Image.delete_all
 Theme.delete_all
 User.delete_all
 Value.delete_all
 
-# Сбрасываем счётчики ID
 ActiveRecord::Base.connection.reset_pk_sequence!('images')
 ActiveRecord::Base.connection.reset_pk_sequence!('themes')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
@@ -30,7 +28,7 @@ Image.create(name: "Матвей Сафонов (ФК ПСЖ, вратарь, 27
 Image.create(name: "Ламин Ямаль (ФК Барселона, нападающий, 19 лет)", file: "yamal.jpg", ave_value: 0, theme_id: 2)
 Image.create(name: "Арсен Захарян (ФК Реал Сосьедад, полузащитник, 23 год)", file: "zaharyan.jpg", ave_value: 0, theme_id: 3)
 
-User.create(name: "Эксперт", email: "expert@example.com")
+User.create(name: "Эксперт", email: "pavem@example.com", password: "123456", password_confirmation: "123456")
 
 puts "База данных успешно заполнена!"
 puts "Тем: #{Theme.count}"
